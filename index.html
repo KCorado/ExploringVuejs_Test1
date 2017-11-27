@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First Vue App</title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>    
+        <!-- This segment is for showing what regular old HTML looks like-->    
+        <h1>Regular HTML</h1>
+        <p>This is a paragraph.</p>
+        <p>------------------</p>
+
+        <!-- This next segment is for showing the usage of Vue.js -->
+        <div id="app">
+            <h1>{{ title1 }}</h1>
+            <p>{{ message1 }}</p>
+        </div>
+
+        <!-- This script is for Vue.js -->
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    title1: "HTML with Vue.js",
+                    message1: "Hello Vue!"
+                }
+            })
+        
+        </script>
+
+    </body>
+</html>
