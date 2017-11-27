@@ -3,6 +3,7 @@
     <head>
         <title>My First Vue App</title>
         <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     </head>
     <body>    
         <!-- This segment is for showing what regular old HTML looks like-->    
@@ -11,18 +12,84 @@
         <p>------------------</p>
 
         <!-- This next segment is for showing the usage of Vue.js -->
+
         <div id="app">
-            <h1>{{ title1 }}</h1>
-            <p>{{ message1 }}</p>
+            <h1>{{ app1_title }}</h1>
+            <p>{{ app1_message }}</p>
+            <br/>
         </div>
+
+
+        <div id="app-2">
+            <h3>{{ app2_title }}</h3>
+            <span v-bind:title="app2_message">
+                Hover your mouse over me for a few seconds 
+                to see my dynamically bound title! It's 
+                gonna be neat I'd say!
+            </span>
+            <br/><br/>
+        </div>
+
+
+        <div id="app-3">
+            <h3>{{ app3_title }}</h3>
+            <span v-if="seen">
+                Now you see me....
+            </span>
+            <br/>
+            <button type="button" onclick="app3.seen = false">Now you dont...</button>
+            <br/><br/>
+        </div>
+
+        <div id="app-4">
+            <h3>{{ app4_title }}</h3>
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+
 
         <!-- This script is for Vue.js -->
         <script>
             var app = new Vue({
-                el: '#app',
+                el: "#app",
                 data: {
-                    title1: "HTML with Vue.js",
-                    message1: "Hello Vue!"
+                    app1_title: "HTML with Vue.js",
+                    app1_message: "Hello Vue!"
+                }
+            })
+
+
+            var app2 = new Vue({
+                el: "#app-2",
+                data: {
+                    app2_title: "Declaritive Rendering",
+                    app2_message: "You loaded this page on " + new Date().toLocaleDateString()
+                }
+            })
+
+
+            var app3 = new Vue({
+                el: "#app-3",
+                data: {
+                    app3_title: "Conditionals",
+                    seen: true
+                }
+            })
+
+
+            var app4 = new Vue({
+                el: "#app-4",
+                data: {
+                    app4_title: "Loops",
+                    app4_input: "",
+                    todos: [
+                        { text: "Improve JavaScript" },
+                        { text: "Learn Vue"},
+                        { text: "Improve skills, and build awesome things!"}
+                    ]
                 }
             })
         
